@@ -1,28 +1,67 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
 </head>
+
 <body>
-    
+
     <h2>Form Validation</h2>
 
-    <form name="form" action="." onsubmit="validateForm()" autocomplete="on" >
-            ID: <input type="text" name="id" ><br>
-            Age: <input type="number" name="age" ><br>
-            Email: <input type="text" name="email" ><br>
-            Password: <input type="password" name="password" ><br>
-            <input type="submit" value="Submit"><br>
-            <input type="reset" name="reset" value="Reset">
-        </form>
+    <form name="form" action="#" onsubmit="validateForm()" autocomplete="on">
+        ID: <input type="text" name="id"><br>
+        Age: <input type="number" name="age"><br>
+        Email: <input type="text" name="email"><br>
+        Password: <input type="password" name="password"><br>
+        <input type="submit" value="Submit"><br>
+        <input type="reset" name="reset" value="Reset">
+        <!-- <button onclick="validateForm()">try</button> -->
+    </form>
 
-        <script>
-        
-            function validateForm() {
-                var x = document.getElementsByName("id");
-                console.log(x);
+    <script>
+
+        function validateForm() {
+            // event.preventDefault()
+            var error = "";
+            var id = document.getElementsByName("id")[0].value
+            var age = document.getElementsByName("age")[0].value;
+            var email = document.getElementsByName("email")[0].value;
+            var password = document.getElementsByName("password")[0].value;
+
+            // var id = document.forms[fname]['id']
+
+            // console.log(document.form[fname])
+
+            // var age = document.forms[fname]['age'] 
+            // var email = document.forms[fname]['email']
+            // var password = document.forms[fname]['password']
+
+            console.log(id)
+            console.log(age)
+            console.log(password)
+            console.log(email)
+
+            if (id.length > 10) {
+                error += "ID should have a maximum of 10 characters.\n";
             }
-     
-         </script>
+
+            if (age < 10 || age > 40) {
+                error += "Age should be between 10 and 40.\n"
+            }
+            if (email.indexOf("@") == -1) {
+                error += "Email should contain @.\n"
+            }
+            if (password == "") {
+                error += "Password should not be empty.\n"
+            }
+
+            if (error) {
+                alert(error)
+            }
+        }
+
+    </script>
 </body>
+
 </html>
